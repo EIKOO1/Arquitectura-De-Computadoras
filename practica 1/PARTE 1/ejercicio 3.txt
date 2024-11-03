@@ -1,0 +1,10 @@
+        ORG 1000H 
+C    DB  "B"
+RES  DB  ?
+SUM  DB  20H
+    ORG 2000H
+     MOV BL,C
+     ADD BL,SUM
+     MOV RES,BL
+HLT
+END

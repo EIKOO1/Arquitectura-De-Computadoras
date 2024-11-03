@@ -1,0 +1,82 @@
+4) Mostrar caracteres individuales ⭐
+
+a) Escribir un programa que muestre en pantalla las letras mayúsculas (“A” a la “Z”).
+Pista: Podés buscar los códigos de la “A” y la “Z” en una tabla de códigos ascii. No utilizar un vector.
+Usar una sola variable de tipo db, e incrementar el valor de esa variable antes de imprimir.
+
+ORG 1000H
+L  DB  "@"
+F  DB  "Z"
+ORG 2000H
+      MOV DH,F
+LAZO: INC L
+      MOV BX, OFFSET L
+      MOV AL,1
+      INT 7
+      CMP L,DH
+      JNZ LAZO
+HLT
+END
+
+
+
+b) ¿Qué deberías modificar en a) para mostrar los dígitos (“0” al “9”)? ¿Y para mostrar todos los
+carácteres disponibles en el código ASCII? Probar en el simulador.
+
+
+
+ORG 1000H
+L  DB  "/"
+F  DB  "9"
+ORG 2000H
+      MOV DH,F
+LAZO: INC L
+      MOV BX, OFFSET L
+      MOV AL,1
+      INT 7
+      CMP L,DH
+      JNZ LAZO
+HLT
+END
+
+ORG 1000H
+L  DB  "0"
+F  DB  "9"
+ORG 2000H
+      DEC L
+      MOV DH,F
+LAZO: INC L
+      MOV BX, OFFSET L
+      MOV AL,1
+      INT 7
+      CMP L,DH
+      JNZ LAZO
+HLT
+END
+
+
+{{TABLA ASCII COMPLETA}}
+
+ORG 1000H
+L  DB  0H
+F  DB  7FH
+ORG 2000H
+      DEC L
+      MOV DH,F
+LAZO: INC L
+      MOV BX, OFFSET L
+      MOV AL,1
+      INT 7
+      CMP L,DH
+      JNZ LAZO
+HLT
+END
+
+
+
+
+c) Modificar el ejercicio b) que muestra los dígitos, para que cada dígito se muestre en una línea
+separada.
+Pista: El código ASCII del carácter de nueva línea es el 10, comúnmente llamado “\n” o LF (“line
+feed” por sus siglas en inglés y porque se usaba en impresoras donde había que “alimentar” una
+nueva línea).

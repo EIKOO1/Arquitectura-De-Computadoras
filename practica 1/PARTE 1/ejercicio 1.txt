@@ -1,0 +1,25 @@
+  ORG 1000h
+string db "aba"
+final db ?
+cant DB 0
+A DB "a"
+
+  ORG 3000H
+CONTAR:CMP BX,AX
+      JZ FIN
+      CMP BYTE PTR [BX],CL
+      JNZ SIGUIENTE
+      INC DL
+SIGUIENTE:INC BX
+      JMP CONTAR
+FIN:   RET
+
+   ORG 2000h
+  MOV DX,0
+  MOV BX,OFFSET string
+  MOV AX, OFFSET final
+  MOV CL,A
+  CALL CONTAR
+  MOV CANT,DL
+  HLT
+  END

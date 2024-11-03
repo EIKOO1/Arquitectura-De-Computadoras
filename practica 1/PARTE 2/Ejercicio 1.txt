@@ -1,0 +1,31 @@
+1) Mostrar mensajes en la pantalla de comandos ⭐
+El siguiente programa del lenguaje assembler del simulador VonSim muestra en la pantalla de comandos
+un mensaje previamente almacenado en memoria de datos, aplicando la interrupción por software INT 7.
+Probar en el simulador.
+
+ORG 1000H
+MSJ DB "ARQUITECTURA DE COMPUTADORAS-"
+DB "FACULTAD DE INFORMATICA-"
+DB 55H
+DB 4EH
+DB 4CH
+DB 50H
+FIN DB ?
+ORG 2000H
+MOV BX, OFFSET MSJ
+MOV AL, OFFSET FIN - OFFSET MSJ
+INT 7
+INT 0
+END
+
+
+a) Ejecutar en el simulador ¿qué imprime?
+
+EL SIMULADOR IMPRIME ARQUITECTURA DE COMPUTADORAS-FACULTAD DE INFORMATUCA-UNLP
+
+b) ¿Por qué imprime “UNLP” al final?
+
+IMPRIME UNLP YA QUE INTERPRETA EL 55H,4EH,4CH,50H como caracteres que corresponde en la tabla ASCII
+c) Con referencia a la interrupción INT 7, ¿qué se almacena en los registros BX y AL?
+
+EN BX SE ALMACENA LA DIRECCION DEL COMIENZO DEL STRING Y EN AL LA LONGITUD DEL STRING

@@ -17,6 +17,8 @@ loop:   beqz $t1,FIN
         daddi $t1,$t1,-1 #LE RESTO A LA CANTIDAD DE ELEMENTOS A LEER
         dadd $t3,$t3,$t2 #SUMo
         j loop
-FIN:    sd $t3,result($zero)
+FIN:    daddi $t0,$zero,1
+        sd $t3,0($t9)
+        sd $t0,0($t8)
         #Leo un numero
         halt

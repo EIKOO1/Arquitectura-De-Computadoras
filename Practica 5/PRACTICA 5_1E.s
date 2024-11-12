@@ -21,7 +21,9 @@ sd $t1,0($s0)
 daddi $t1,$zero,8
 ld $a1,0($s1) #GUARDO EL NUMERO
 jal potencia 
-sd $v0,res($zero)
+daddi $t1,$zero,1
+sd $v0,0($s1) #MANDO A DATA
+sd $t1,0($s0)   
 halt
 
 potencia: daddi $v0, $zero, 1
